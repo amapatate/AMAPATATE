@@ -1,5 +1,7 @@
-  CREATE DATABASE bdd_amapatate;
-     USE bdd_amapatate;
+drop database  if exists  bdd_amapatate_v2;
+
+  CREATE DATABASE bdd_amapatate_v2;
+     USE bdd_amapatate_v2;
 
 	CREATE TABLE compte (
 	tel varchar(15),
@@ -20,14 +22,14 @@ CREATE TABLE `compte_agriculteur` (
   `rib` varchar(256) ,
   `type_paiement` varchar(30) ,
   PRIMARY KEY (tel_agriculteur),
-  FOREIGN KEY (tel_agriculteur) REFERENCES compte (tel)
+  FOREIGN KEY (tel_agriculteur) REFERENCES compte (tel) on update cascade on delete cascade
 ) ENGINE=InnoDB CHARSET=utf8;
 
 
 CREATE TABLE `compte_client` (
   `tel_client` varchar(15) ,
    PRIMARY KEY (tel_client),
-  FOREIGN KEY (tel_client) REFERENCES compte (tel)
+  FOREIGN KEY (tel_client) REFERENCES compte (tel) on update cascade on delete cascade
 ) ENGINE=InnoDB CHARSET=utf8;
 
 CREATE TABLE panier (
@@ -45,7 +47,7 @@ CREATE TABLE panier_client (
    masse_panier_kg float,
    PRIMARY KEY (id_panier_client),
   FOREIGN KEY (id_panier_client) REFERENCES panier (id_panier),
-  FOREIGN KEY (tel_client) REFERENCES compte_client  (tel_client)
+  FOREIGN KEY (tel_client) REFERENCES compte_client  (tel_client) 
 ) ENGINE=InnoDB CHARSET=utf8;
 
 CREATE TABLE produit (
@@ -64,8 +66,8 @@ CREATE TABLE produit_agriculteur (
    id_produit int,
    qte_dispo float,
    PRIMARY KEY (id_produit_agriculteur),
-  FOREIGN KEY (id_produit) REFERENCES produit (id_produit),
-  FOREIGN KEY (tel_agriculteur) REFERENCES compte_agriculteur  (tel_agriculteur)
+  FOREIGN KEY (id_produit) REFERENCES produit(id_produit),
+  FOREIGN KEY (tel_agriculteur) REFERENCES compte_agriculteur(tel_agriculteur)
 ) ENGINE=InnoDB CHARSET=utf8;
 
 CREATE TABLE compose (
@@ -84,6 +86,7 @@ INSERT INTO produit (nom) VALUES
 
 INSERT INTO compte (tel, nom, prenom,email,mdp) VALUES 
 ('01231456789','Nerve','Germaine','nerve@free.fr','patate');
+
 INSERT INTO compte_client(tel_client) VALUES
 ('01231456789');
 
