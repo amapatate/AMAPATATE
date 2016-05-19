@@ -9,7 +9,7 @@ def presentation():
   	 <div class=" col-md-6 col-xs-12">
         <a href="#"><h3>Qu'est-ce qu'une AMAP ?</h3></a>
       	<a href="#">
-            <img src="/IENAC15/AMAP'ATATE/images/patate.jpg" alt="PATATE" titre="qu'est ce qu'une amap"/>
+            <img src="/IENAC15/Beldjilali_Garcia_Raby_Ranaivoharison/image/patate.jpg" alt="PATATE" titre="qu'est ce qu'une amap"/>
         </a>
      </div>
      <div class="site col-md-6 col-xs-12" >
